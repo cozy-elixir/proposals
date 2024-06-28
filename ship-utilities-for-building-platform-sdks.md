@@ -1,6 +1,8 @@
 # Ship utilities for building platform SDKs
 
-After writing multiple platform SDKs for myself and my employers, I found that:
+> This is an evolution of [my previous proposal](./tesla-compatible-libraries.md).
+
+After writing multiple platform SDKs for myself and my employers, I found two main problems:
 
 1. including an HTTP client in the SDKs is very inflexible.
 2. trying to implement all the APIs provided by a platform is very uneconomical.
@@ -17,13 +19,15 @@ Everyone has their preferences for defining interfaces. If SDK users' preference
 
 Everyone also has their preferences for HTTP clients. Some prefer higher-level abstractions like Tesla, while others prefer lower-level implementations like Finch.
 
-And, if a project includes multiple SDKs that each come with their own HTTP client, multiple HTTP clients will coexist in the project, which is a disaster for observability.
+And, if a project includes multiple SDKs that each come with their own HTTP client, multiple HTTP clients will coexist in the project, which is a disaster for maintainence.
+
+> Using multiple HTTP clients in one project, not only consumes more resources but may also creates inconsistencies in usage patterns, complicates maintenance, observation and debugging, etc.
 
 ## For problem 2
 
-From the SDK maintainers' perspective, SDKs need to handle almost all usage scenarios, leading to high development and maintenance costs. Most SDK maintainers are not employees of these platforms, so they don't gain financially from building a comprehensive SDK.
+From the SDK maintainers' perspective, SDKs need to handle almost all usage scenarios, leading to high development and maintenance cost.
 
-From the SDK users' perspective, SDKs often try to hide details, adding many extra abstractions. This increases usage costs, as users must understand both the platform's concepts and the additional abstractions from the SDK. If any issues arise, there are extra debugging costs.
+From the SDK users' perspective, SDKs often try to hide details, adding many extra abstractions. This increases usage cost, as users must understand both the platform's concepts and the additional abstractions from the SDK. If any issue arises, there are extra debugging cost.
 
 ## More problems
 
@@ -52,17 +56,16 @@ Release SDK utilities that only provide essential functionalities which help use
 
 And, leaving all other decisions to the users:
 
-- how to getting and using configurations
+- how to get and use configurations
 - how to build and send requests
+- what to implement in the SDK (all the APIs or just what they need)
 - how to test
 - ...
 
 In this way:
 
 - The maintainers won't spend much time on maintenance anymore, as there is considerably less code to maintain.
-- The users will have complete freedom.
-
-Everyone becomes happier.
+- The users can implement their own SDKs at a lower cost, as the hardest parts have been implemented by the SDK utilities. And, they will have complete freedom.
 
 ## References
 
