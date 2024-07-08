@@ -67,6 +67,12 @@ In this way:
 - The maintainers won't spend much time on maintenance anymore, as there is considerably less code to maintain.
 - The users can implement their own SDKs at a lower cost, as the hardest parts have been implemented by the SDK utilities. And, they will have complete freedom.
 
+## Packages
+
+Pakcages I built for this new paradigm.
+
+- [http_spec](https://github.com/cozy-elixir/http_spec)
+
 ## References
 
 - [SDKs with Req: Stripe](https://dashbit.co/blog/sdks-with-req-stripe)
