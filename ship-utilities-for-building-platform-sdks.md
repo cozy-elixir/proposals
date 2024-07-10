@@ -56,9 +56,10 @@ Release SDK utilities that only provide essential functionalities which help use
 
 And, leaving all other decisions to the users:
 
+- what to implement in the SDK (all the APIs or just what they need)
 - how to get and use configurations
 - how to build and send requests
-- what to implement in the SDK (all the APIs or just what they need)
+- how to handle errors
 - how to test
 - ...
 
@@ -69,7 +70,7 @@ In this way:
 
 ## Packages
 
-Pakcages I built for this new paradigm.
+Pakcages I built for this paradigm:
 
 - [http_spec](https://github.com/cozy-elixir/http_spec)
 
